@@ -1,5 +1,5 @@
 
-import {VRButton} from './node_modules/three/examples/jsm/webxr/VRButton.js';
+import {VRButton} from 'https://unpkg.com/browse/three@0.136.0/examples/jsm/webxr/VRButton.js';
 document.body.style.margin = '0';
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 0.1, 1000 );
@@ -32,9 +32,14 @@ console.log(con1);
 
 camera.position.z = 5;
 
+let cubem = new THREE.Mesh(
+    new THREE.BoxGeometry(0.2,0.2,0.2),
+     new THREE.MeshBasicMaterial({color:0xF7347C}));
+
 
 scene.add(new THREE.PointLightHelper(light, 0.1 ))
 
 renderer.setAnimationLoop(() => {
+    cubem.position.set(con1.position.x,con1.position.y,con1.position.z);
     renderer.render(scene, camera);   
 })
